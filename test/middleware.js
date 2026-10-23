@@ -80,15 +80,15 @@ describe("custom middleware", function(){
 
 describe("guide middleware", function(){
 
-  // the shape knob hands over: routes parsed at publish, status as strings
+  // the shape knob hands over: routes parsed at publish, numeric statuses
   var port = 9969
   before(function(done){
     express()
       .use(yonder(function(req, rsp, cb){
         cb([
-          ["301", "/tools/hn-popularity/methodology/", "https://popularity.refactoringenglish.com/about/"],
-          ["301", "/chapters/:chapter/", "/excerpts/:chapter/"],
-          ["301", "/tag/:name", "/tags/:name"]
+          [301, "/tools/hn-popularity/methodology/", "https://popularity.refactoringenglish.com/about/"],
+          [301, "/chapters/:chapter/", "/excerpts/:chapter/"],
+          [301, "/tag/:name", "/tags/:name"]
         ])
       }))
       .use(function(req, rsp){
